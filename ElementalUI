@@ -13,7 +13,7 @@ local ClosedText = "⬇ Show ⬇"
 
 --Forging a frame--
 
-local NewGui = Instance.New("ScreenGui")
+local NewGui = Instance.new("ScreenGui")
 NewGui.Parent = Gui.Parent
 NewGui.IgnoreGuiInset = true
 NewGui.Name = "NothingSusRlly(im_sorry)"
