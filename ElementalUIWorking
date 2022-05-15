@@ -180,7 +180,7 @@ local function AutorollToggle(st)
 		print("-->Autoroll stack begin<--")
 		print("--------------------------")
 		print("                          ")
-
+		
 		repeat wait(.1)
 			local Magic, Rarity
 			if HasInstaspin then
@@ -188,13 +188,17 @@ local function AutorollToggle(st)
 			else
 				Magic, Rarity = game:GetService("ReplicatedStorage").Events.Spin:InvokeServer(false)
 			end
-
-			if (not Magic or not Rarity) and AutorollIndicator.BackgroundColor3 ~= Color3.new(1, 0, 0) then
-				AutorollIndicator.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
-			end
+			
 			if Magic and Rarity then
 
 				print("Rolled "..Magic.." with rarity: "..Rarity)
+				
+				if Plr.Character then
+					
+					Plr.Character:BreakJoints()
+					
+				end
+				
 				if table.find(WantedRarities,Rarity) then
 					warn("---!Your preference has rolled out! ("..Rarity.." "..Magic..")---")
 					AutorollToggle(false)
@@ -205,12 +209,6 @@ local function AutorollToggle(st)
 
 			end
 		until not Autoroll_Enabled
-
-		if Plr.Character then
-
-			Plr.Character:BreakJoints()
-
-		end
 
 		print("                          ")
 		print("--------------------------")
