@@ -183,19 +183,22 @@ local function AutorollToggle(st)
 			end
 
 			if not Magic or not Rarity then
-				warn("---!Out of spins!---")
+				print("---!Out of spins!---")
 				AutorollToggle(false)
 
 				Autoroll.Text = "Out of spins!"
 				AutorollIndicator.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
 			end
+			
+			if Autoroll_Enabled then
 			print("Rolled "..Magic.." with rarity: "..Rarity)
 			if table.find(WantedRarities,Rarity) then
-				warn("---!Your preference has rolled out! ("..Rarity.." "..Magic..")---")
+				print("---!Your preference has rolled out! ("..Rarity.." "..Magic..")---")
 				AutorollToggle(false)
 
 				Autoroll.Text = Rarity.." "..Magic.." has rolled out!"
 				AutorollIndicator.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+			end
 			end
 		until not Autoroll_Enabled
 
