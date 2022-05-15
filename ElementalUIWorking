@@ -189,7 +189,7 @@ local function AutorollToggle(st)
 				Magic, Rarity = game:GetService("ReplicatedStorage").Events.Spin:InvokeServer(false)
 			end
 
-			if not Magic or not Rarity then
+			if (not Magic or not Rarity) and AutorollIndicator.BackgroundColor3 ~= Color3.new(1, 0, 0) then
 				AutorollIndicator.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
 			end
 			if Magic and Rarity then
