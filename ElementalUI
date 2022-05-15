@@ -3,7 +3,7 @@ task.wait(1)
 local TS = game:GetService("TweenService")
 
 local Plr = game.Players.LocalPlayer
-local Gui = Plr.PlayerGui:WaitForChild("ScreenGui").Start
+local Gui = Plr.PlayerGui:WaitForChild("ScreenGui")
 
 local TitleText = "Elemental Awakener v.0.1 [2022]"
 local InfoText = "Press F9 for more info"
