@@ -201,8 +201,10 @@ local function AutorollToggle(st)
 			end
 			end
 		until not Autoroll_Enabled
-
-		game.Players.LocalPlayer.Character:BreakJoints()
+		
+		if Plr.Character then
+		Plr.Character:BreakJoints()
+		end
 
 		print("                          ")
 		print("--------------------------")
