@@ -13,6 +13,11 @@ local ClosedText = "⬇ Show ⬇"
 
 --Forging a frame--
 
+local NewGui = Instance.New("ScreenGui")
+NewGui.Parent = Gui.Parent
+NewGui.IgnoreGuiInset = true
+NewGui.Name = "NothingSusRlly(im_sorry)"
+
 local MainFrame = Instance.new("Frame")
 MainFrame.BorderSizePixel = 0
 
@@ -34,7 +39,7 @@ local TextLabel1 = Instance.new("TextLabel")
 
 ---
 
-MainFrame.Parent = Gui
+MainFrame.Parent = NewGui
 
 OpenClose.Parent = MainFrame
 Exit.Parent = MainFrame
@@ -174,7 +179,7 @@ local function AutorollToggle(st)
 		print("--------------------------")
 		print("                          ")
 
-		repeat wait(.1)
+		repeat
 			local Magic, Rarity
 			if HasInstaspin then
 				Magic, Rarity = game:GetService("ReplicatedStorage").Events.Spin:InvokeServer(true)
@@ -183,10 +188,6 @@ local function AutorollToggle(st)
 			end
 
 			if not Magic or not Rarity then
-				print("---!Out of spins!---")
-				AutorollToggle(false)
-
-				Autoroll.Text = "Out of spins!"
 				AutorollIndicator.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
 			end
 			
@@ -200,6 +201,8 @@ local function AutorollToggle(st)
 				AutorollIndicator.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
 			end
 			end
+			
+			wait(.1)
 		until not Autoroll_Enabled
 		
 		if Plr.Character then
